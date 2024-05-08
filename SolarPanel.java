@@ -1,93 +1,90 @@
-package com.mycompany.energyresourcesmanagment;
+package EnergyResourcesManagment;
 
-public class SolarPanel implements  EnergyResource {
-    private String Id;
-    private double Efficiency;
-    private double Orientation;
-    private double SurfaceArea;
- 
-   public SolarPanel(String Id, double Orientation, double Efficiency, double SurfaceArea) {
-        // Validation for Id
-        if (Id == null || Id.isEmpty()) {
-            throw new IllegalArgumentException("Id cannot be null or empty.");
-        }
+public class SolarPanel extends AbstractEnergyResource {
+    private double orientation;
+    private double surfaceArea;
 
-        // Validation for Orientation
-        if (Orientation < 0 || Orientation > 360) {
+    public SolarPanel(String id, double efficiency, double orientation, double surfaceArea) {
+        super(id, efficiency);
+
+        if (orientation < 0 || orientation > 360) {
             throw new IllegalArgumentException("Orientation must be between 0 and 360 degrees.");
         }
 
-        // Validation for Efficiency
-        if (Efficiency <= 0 || Efficiency > 1) {
-            throw new IllegalArgumentException("Efficiency must be a positive value less than or equal to 1.");
-        }
-
-        // Validation for SurfaceArea
-        if (SurfaceArea <= 0) {
+        if (surfaceArea <= 0) {
             throw new IllegalArgumentException("Surface area must be a positive value.");
         }
 
-        this.Id = Id;
-        this.Orientation = Orientation;
-        this.Efficiency = Efficiency;
-        this.SurfaceArea = SurfaceArea;
-    }
-
-  public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-      Id = id;
-    }
-
-    public double getEfficiency() {
-        return Efficiency;
-    }
-
-    public void setEfficiency(double efficiency) {
-        Efficiency = efficiency;
+        this.orientation = orientation;
+        this.surfaceArea = surfaceArea;
     }
 
     public double getOrientation() {
-        return Orientation;
+        return orientation;
     }
 
     public void setOrientation(double orientation) {
-        Orientation = orientation;
+        this.orientation = orientation;
     }
 
     public double getSurfaceArea() {
-        return SurfaceArea;
+        return surfaceArea;
     }
 
     public void setSurfaceArea(double surfaceArea) {
-        SurfaceArea = surfaceArea;
-    }
-     
-   @Override
-    public double calculateEnergyProduction() {
-        // Example calculation based on incident solar irradiance
-        // Adjust this calculation based on your specific scenario
-        double incidentSolarIrradiance = 1000; // Example value (1 kW/m^2)
-        return incidentSolarIrradiance * Efficiency * SurfaceArea;
+        this.surfaceArea = surfaceArea;
     }
 
     @Override
-    public double calculateEnergyConsumption() {
-        // Implementation specific to solar panel (if applicable)
-        return 0.0; // Placeholder value
+    public double calculateEnergyProduction() {
+        double incidentSolarIrradiance = 1000;
+        return incidentSolarIrradiance * getEfficiency() * surfaceArea;
     }
-     
+
     @Override
-    public double calculateTotalEfficiency() {
+    public double calculateEnergyConsumption(double activeTimeHours, double powerConsumption) {
+        // Calculate energy consumption based on active time and power consumption
+        return activeTimeHours * powerConsumption;
+    }
+
+    @Override
+    public double calculateEfficiency() {
         double production = calculateEnergyProduction();
         return 0.9 * production; 
     }
-    
+
     @Override
     public double calculateNetEnergyProduction(){
        return calculateEnergyProduction() - calculateEnergyConsumption();  
+    }
+
+    @Override
+    public String getType() {
+        return "Solar Panel";
+    }
+
+    @Override
+    public double getMaxCapacity() {
+        return 0.0;
+    }
+
+    @Override
+    public double getCurrentCapacity() {
+        return 0.0;
+    }
+
+    @Override
+    public String getStatus() {
+        return "Unknown";
+    }
+
+    @Override
+    public void setStatus(String status) {
+    }
+
+    @Override
+    public double calculatePaybackPeriod(double initialCost, double energySavingsPerYear) {
+        return 0.0;
+    }
 }
-    
-}
+
