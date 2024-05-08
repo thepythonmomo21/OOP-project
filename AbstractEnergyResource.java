@@ -1,11 +1,12 @@
 package EnergyResourcesManagment;
 
-public class AbstractEnergyResource {
-   private String id;
-	    private double efficiency;
+public abstract class AbstractEnergyResource implements EnergyResource {
+	 protected String id;
+	    protected double efficiency;
 	    private boolean active;
 	    private double[] location;
-
+	    protected double activeTimeHours ;
+	    protected double doublepowerConsumption ;
 	    // Constructor
 	    public AbstractEnergyResource(String id, double efficiency) {
 	        this.id = id;
@@ -17,8 +18,8 @@ public class AbstractEnergyResource {
 	    @Override
 	    public abstract double calculateEnergyProduction();
 
-	    @Override
-	    public abstract double calculateEnergyConsumption();
+	 
+	   
 
 	    @Override
 	    public boolean isActive() {
@@ -41,10 +42,7 @@ public class AbstractEnergyResource {
 	        return "Unknown";
 	    }
 
-	    @Override
-	    public String getID() {
-	        return id;
-	    }
+	
 
 	    @Override
 	    public void setLocation(double latitude, double longitude) {
@@ -56,6 +54,15 @@ public class AbstractEnergyResource {
 	    public double[] getLocation() {
 	        return location;
 	    }
+	 
+	      
+
+	        @Override
+	        public abstract double calculateEnergyConsumption(double activeTimeHours, double powerConsumption);
+
+	        // ... other methods ...
+	    }
+
 
 	    @Override
 	    public double getMaxCapacity() {
