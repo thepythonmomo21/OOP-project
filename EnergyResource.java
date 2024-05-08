@@ -1,10 +1,16 @@
 package EnergyResourcesManagment ; 
 
 public interface EnergyResource {
-     double calculateEnergyProduction();
+	
+	    // Method to calculate the energy production of the resource
+	    double calculateEnergyProduction();
 
 	    // Method to calculate the energy consumption of the resource
-	    double calculateEnergyConsumption();
+	  
+
+	        double calculateEnergyConsumption(double activeTimeHours, double powerConsumption);
+	    
+
 
 	    // Method to check if the resource is currently active or inactive
 	    boolean isActive();
@@ -53,3 +59,6 @@ public interface EnergyResource {
 	    // Method to calculate the efficiency of the resource
 	    double calculateEfficiency();
 	}
+
+
+
