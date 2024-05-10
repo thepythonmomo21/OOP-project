@@ -1,1 +1,59 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+public class Sensor {
+    private List<Double> sunlightIntensityData;
+    private List<Double> windSpeedData;
+    private List<Double> waterFlowRateData;
+
+    // Constructor
+    public Sensor() {
+        this.sunlightIntensityData = new ArrayList<>();
+        this.windSpeedData = new ArrayList<>();
+        this.waterFlowRateData = new ArrayList<>();
+    }
+
+    // Method to retrieve sensor data
+    public void retrieveSensorData() {
+        // Simulate retrieving sensor data
+        Random random = new Random();
+        double sunlightIntensity = random.nextDouble() * 100; // Random value between 0 and 100
+        double windSpeed = random.nextDouble() * 50; // Random value between 0 and 50
+        double waterFlowRate = random.nextDouble() * 10; // Random value between 0 and 10
+
+        // Add retrieved data to the respective lists
+        sunlightIntensityData.add(sunlightIntensity);
+        windSpeedData.add(windSpeed);
+        waterFlowRateData.add(waterFlowRate);
+    }
+
+    // Method to compare current data with previous day's data and calculate average
+    public double calculateAverageSunlightIntensity() {
+        // Calculate average sunlight intensity
+        double sum = 0.0;
+        for (double intensity : sunlightIntensityData) {
+            sum += intensity;
+        }
+        return sum / sunlightIntensityData.size();
+    }
+
+    public double calculateAverageWindSpeed() {
+        // Calculate average wind speed
+        double sum = 0.0;
+        for (double speed : windSpeedData) {
+            sum += speed;
+        }
+        return sum / windSpeedData.size();
+    }
+
+    public double calculateAverageWaterFlowRate() {
+        // Calculate average water flow rate
+        double sum = 0.0;
+        for (double rate : waterFlowRateData) {
+            sum += rate;
+        }
+        return sum / waterFlowRateData.size();
+    }
+}
 
