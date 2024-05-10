@@ -1,4 +1,5 @@
-package EnergyResourcesManagement; 
+package EnergyResourcesManagment;
+
 public class WindTurbine extends AbstractEnergyResource { 
     private double bladelength;
     private double windspeed; 
@@ -19,18 +20,22 @@ public class WindTurbine extends AbstractEnergyResource {
       }
         public void setwindspeed(double windspeed){
         this.windspeed=windspeed;
-      {
-             @Override
-    public double calculateEnergyProduction() {
-        double airDensity = 1.225;
-        double area = Math.PI * Math.pow(bladeLength, 2);
-        return 0.5 * airDensity * area * windSpeed * windSpeed * windSpeed * powerCoefficient * getEfficiency();
-    }
+        }
+        @Override
+        public double calculateEnergyProduction() {
+            double airDensity = 1.225; // Air density in kg/m^3 (standard value)
+            double sweptArea = Math.PI * Math.pow(bladelength, 2); // Swept area of the turbine's blades
+            double powerCoefficient = 0.45; // Typical power coefficient for a wind turbine (may vary)
+            
+            // Calculate the energy production using the formula: 0.5 * airDensity * sweptArea * windspeed^3 * powerCoefficient * efficiency
+            return 0.5 * airDensity * sweptArea * Math.pow(windspeed, 3) * powerCoefficient * getEfficiency();
+        }
 
     @Override
     public double calculateEnergyConsumption(double activeTimeHours, double powerConsumption) {
-        // Wind turbines generally do not consume energy during operation
-        return 0.0;
+        // Energy consumption = Power consumption * Time of operation
+        double energyConsumed = powerConsumption * activeTimeHours;
+        return energyConsumed;
     }
 
     @Override
@@ -65,4 +70,3 @@ public class WindTurbine extends AbstractEnergyResource {
         return 0.0;
     }
 }
-          
