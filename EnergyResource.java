@@ -58,6 +58,28 @@ public interface EnergyResource {
 
 	    // Method to calculate the efficiency of the resource
 	    double calculateEfficiency();
+	    // Method to get the water flow rate of the resource (for HydroelectricGenerator)
+	     double getWaterFlowRate();
+	    // Method to set the water flow rate of the resource (for HydroelectricGenerator)
+	    void setWaterFlowRate(double waterFlowRate);
+	    // Method to get the head of the resource (for HydroelectricGenerator)
+	     double getHead();
+	    // Method to set the head of the resource (for HydroelectricGenerator)
+             void setHead(double head);
+
+            // Method to get the blade length of the resource (for WindTurbine)
+             double getBladeLength();
+
+             // Method to set the blade length of the resource (for WindTurbine)
+             void setBladeLength(double bladeLength);
+
+            // Method to get the wind speed of the resource (for WindTurbine)
+             double getWindSpeed();
+
+           // Method to set the wind speed of the resource (for WindTurbine)
+            void setWindSpeed(double windSpeed);
+
+	
 	}
 
 
