@@ -3,8 +3,9 @@ package EnergyResourcesManagment;
 public class SolarPanel extends AbstractEnergyResource {
     private double orientation;
     private double surfaceArea;
-
-    public SolarPanel(String id, double efficiency, double orientation, double surfaceArea) {
+    private String status ; 
+    
+	public SolarPanel(String id, double efficiency, double orientation, double surfaceArea) {
         super(id, efficiency);
 
         if (orientation < 0 || orientation > 360) {
@@ -54,16 +55,6 @@ public class SolarPanel extends AbstractEnergyResource {
     }
 
     @Override
-    public double calculateNetEnergyProduction(){
-       return calculateEnergyProduction() - calculateEnergyConsumption();  
-    }
-
-    @Override
-    public String getType() {
-        return "Solar Panel";
-    }
-
-    @Override
     public double getMaxCapacity() {
         return 0.0;
     }
@@ -73,18 +64,15 @@ public class SolarPanel extends AbstractEnergyResource {
         return 0.0;
     }
 
-    @Override
-    public String getStatus() {
-        return "Unknown";
-    }
+   
 
-    @Override
+    public String getStatus() {
+		return status;
+	}
+
+	@Override
     public void setStatus(String status) {
     }
 
-    @Override
-    public double calculatePaybackPeriod(double initialCost, double energySavingsPerYear) {
-        return 0.0;
-    }
+    
 }
-
