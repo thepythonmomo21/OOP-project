@@ -42,14 +42,8 @@ public class WindTurbine extends AbstractEnergyResource {
     public double calculateEfficiency() {
         return getEfficiency(); //
     }
-    @Override
-    public double calculateNetEnergyProduction() {
-        return calculateEnergyProduction();
-    }
-    @Override
-    public String getType() {
-        return "Wind Turbine";
-    }
+  
+   
     @Override
     public double getMaxCapacity() {
         return 0.0; 
@@ -58,15 +52,10 @@ public class WindTurbine extends AbstractEnergyResource {
     public double getCurrentCapacity() {
         return 0.0; //
     }
-    @Override
-    public String getStatus() {
-        return "Unknown";
-    }
+   
+   
     @Override
     public void setStatus(String status){
     }
-    @Override
-    public double calculatePaybackPeriod(double initialCost, double energySavingsPerYear) {
-        return 0.0;
-    }
+   
 }
