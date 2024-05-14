@@ -46,8 +46,11 @@ public class HydroelectricGenerator extends AbstractEnergyResource {
 	      double adjustedEfficiency = getEfficiency() * 0.9;
 	      return adjustedEfficiency;
 	  }
-		  
-	  
-	  
-	    
+
+	@Override
+	public Object getId() {
+		return null;
 	}
+
+
+}

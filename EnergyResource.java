@@ -18,7 +18,9 @@ public interface EnergyResource {
      
      void setStatus(String status); 
      double calculateEfficiency();
-	}
+
+    Object getId();
+}
 
 
 

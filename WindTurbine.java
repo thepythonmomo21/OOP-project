@@ -42,8 +42,13 @@ public class WindTurbine extends AbstractEnergyResource {
     public double calculateEfficiency() {
         return getEfficiency(); //
     }
-  
-   
+
+    @Override
+    public Object getId() {
+        return null;
+    }
+
+
     @Override
     public double getMaxCapacity() {
         return 0.0; 

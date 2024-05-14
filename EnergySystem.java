@@ -3,7 +3,7 @@ package EnergyResourcesManagment;
 import java.util.ArrayList;
 
 public class EnergySystem {
-    private ArrayList<EnergyResource> energyResources;
+    public ArrayList<EnergyResource> energyResources;
     private Battery battery;
     private int id;
 
@@ -36,14 +36,17 @@ public class EnergySystem {
         return totalConsumption;
     }
 
-    public void printDetails() {
+    public String printDetails(double production) {
         System.out.println("Energy System ID: " + id);
         System.out.println("Total Energy Production: " + calculateTotalEnergyProduction());
         System.out.println("Total Energy Consumption: " + calculateTotalEnergyConsumption(24, 1000)); // Replace with actual values
         for (EnergyResource resource : energyResources) {
-            
             System.out.println("Resource Efficiency: " + resource.getEfficiency());
             // Add more details as needed...
         }
+        return null;
+    }
+
+    public void setName(String name) {
     }
 }
